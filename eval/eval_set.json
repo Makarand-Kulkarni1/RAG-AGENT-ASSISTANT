@@ -1,0 +1,22 @@
+[
+  {
+    "question": "What ROC-AUC did the churn prediction model achieve?",
+    "expected_keywords": ["0.837", "ROC-AUC"]
+  },
+  {
+    "question": "What company is this person interning at?",
+    "expected_keywords": ["Greateway Software"]
+  },
+  {
+    "question": "What was the recall before and after threshold tuning?",
+    "expected_keywords": ["53%", "69%"]
+  },
+  {
+    "question": "What accuracy did the crypto market regime model achieve?",
+    "expected_keywords": ["63%"]
+  },
+  {
+    "question": "What deployment tools were used for the RAG project?",
+    "expected_keywords": ["FastAPI", "Streamlit"]
+  }
+]

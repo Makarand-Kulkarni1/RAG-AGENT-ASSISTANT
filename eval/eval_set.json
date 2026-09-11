@@ -1,22 +1,22 @@
 [
   {
-    "question": "What ROC-AUC did the churn prediction model achieve?",
-    "expected_keywords": ["0.837", "ROC-AUC"]
+    "question": "What are the two dominant frameworks used to build neural networks?",
+    "expected_keywords": ["PyTorch", "TensorFlow"]
   },
   {
-    "question": "What company is this person interning at?",
-    "expected_keywords": ["Greateway Software"]
+    "question": "What process does a neural network use to adjust its weights during training?",
+    "expected_keywords": ["backpropagation"]
   },
   {
-    "question": "What was the recall before and after threshold tuning?",
-    "expected_keywords": ["53%", "69%"]
+    "question": "What technique retrieves relevant documents and provides them to an LLM as context?",
+    "expected_keywords": ["Retrieval-Augmented Generation"]
   },
   {
-    "question": "What accuracy did the crypto market regime model achieve?",
-    "expected_keywords": ["63%"]
+    "question": "What mechanism lets an LLM decide when to call an external tool?",
+    "expected_keywords": ["function calling"]
   },
   {
-    "question": "What deployment tools were used for the RAG project?",
-    "expected_keywords": ["FastAPI", "Streamlit"]
+    "question": "What framework is commonly used to wrap a model in a REST API?",
+    "expected_keywords": ["FastAPI"]
   }
 ]

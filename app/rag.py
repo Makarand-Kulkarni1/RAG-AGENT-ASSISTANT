@@ -38,28 +38,35 @@ def chunk_text(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) 
         chunks.append(text[start:start + size])
         start += size - overlap
     return chunks
-SECTION_HEADERS = [
-    "PROFESSIONAL SUMMARY", "TECHNICAL SKILLS", "PROFESSIONAL EXPERIENCE",
-    "PROJECTS", "EDUCATION", "CERTIFICATIONS",
-]
-
 def split_into_sections(text: str) -> list[dict]:
-    pattern = "(" + "|".join(re.escape(h) for h in SECTION_HEADERS) + ")"
-    parts = re.split(pattern, text)
-
+   
+    lines = text.split("\n")
     sections = []
     current_header = "HEADER"
-    buffer = ""
-    for part in parts:
-        if part in SECTION_HEADERS:
-            if buffer.strip():
-                sections.append({"section": current_header, "text": buffer.strip()})
-            current_header = part
-            buffer = ""
+    buffer = []
+
+    def is_header(line: str) -> bool:
+        stripped = line.strip()
+        if not stripped or len(stripped) > 60:
+            return False
+        # Must be substantially uppercase letters (allow spaces/&/parens)
+        letters = [c for c in stripped if c.isalpha()]
+        if not letters:
+            return False
+        return all(c.isupper() for c in letters) and len(stripped.split()) <= 8
+
+    for line in lines:
+        if is_header(line):
+            if buffer:
+                sections.append({"section": current_header, "text": " ".join(buffer).strip()})
+                buffer = []
+            current_header = line.strip()
         else:
-            buffer += part
-    if buffer.strip():
-        sections.append({"section": current_header, "text": buffer.strip()})
+            buffer.append(line)
+
+    if buffer:
+        sections.append({"section": current_header, "text": " ".join(buffer).strip()})
+
     return sections
 
 
